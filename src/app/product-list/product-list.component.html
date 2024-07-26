@@ -1,0 +1,30 @@
+<h2>Products</h2>
+
+<div *ngFor="let product of products">
+  <!-- With *ngFor, the <div> repeats for each product in the list. Structural directives shape or reshape the DOM's structure, by adding, removing, and manipulating elements. -->
+
+  <h3>
+    <a [title]="product.name + ' details'">
+      <!-- "a" tag element to link each line to product details -->
+      <!-- square braks = property binding syntax. hovering over shows bound name property value. lets use of property value in a template expression. -->
+      {{ product.name }}
+      <!-- double curly stmt = angular interpolation syntax. renders property value as text. -->
+    </a>
+  </h3>
+  <p *ngIf="product.description">
+    <!-- angular IF. create "p" tag element if the current product has a description -->
+    Description: {{ product.description }}
+  </p>
+  <button type="button" (click)="share()">
+    <!-- button with clickEvent to share() method in .ts -->
+    <!-- event binding uses simple braks around event -->
+    <!-- any popup is controlled by the clickEvent method -->
+    Share
+  </button>
+  <app-product-alerts [product]="product" (notify)="onNotify()">
+    <!-- displays ProductAlertsComponent as child of ProductListComponent -->
+    <!-- pass current product as input to the component using property binding -->
+    <!-- new alert component takes product as input from list, showhides Notify Me button based on product price.  -->
+    <!-- binding onNotify() here to connect the trigger to the child's event-->
+  </app-product-alerts>
+</div>

@@ -1,0 +1,10 @@
+<div>
+  <p *ngIf="product && product.price > 700">
+    <!-- condition for button to appear if price > 700 -->
+
+    <!-- <button type="button">Notify Me</button> -->
+
+    <button type="button" (click)="notify.emit()">Notify Me</button>
+    <!-- add event bdining to call notify.emit() method -->
+  </p>
+</div>
